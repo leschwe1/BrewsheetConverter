@@ -1,0 +1,7 @@
+# ignore csv, json, xslx
+*.csv
+*.json
+*.xlsx
+
+# keep empty brewsheet pattern
+!brewsheet_empty.xlsx
