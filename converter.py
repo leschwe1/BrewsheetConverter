@@ -195,13 +195,13 @@ def converter(batchno, brewdate,in_path, out_path, excel_layout = 'brewsheet_emp
         [beerName ,None,None,None,None,None,None,batchno,None,brewdate,None,None,"Brewer:" ,None,None], #ok
         [style,None,None,None,None,og,"°P",abv,"%",fg,"°P",color,"EBC",ibu,"IBU"], #ok
         ["FERMENTATION",None,"ist","min","soll","max","Schritt","Beding." ,None,"Temp","Druck","ABFÜLLUNG",None,"Resp:" ,None,None],
-        ["Hefemenge",None,None,None,fermYeastAmount,None,1,fermSteps[0]['name'],None,fermSteps[0]['temp'],fermSteps[0]['pressure'],"Kegs 20l",None,None,None,None],
-        ["Gen",None,None,None,None,None,2,fermSteps[1]['name'],None,fermSteps[1]['temp'],fermSteps[1]['pressure'],"Kegs 50l",None,None,None,None],
+        ["Hefemenge",None,None,None,fermYeastAmount,None,1,fermSteps[0]['name'],None,fermSteps[0]['temp'],fermSteps[0]['pressure'],"Datum",None,None,None,None],
+        ["Gen",None,None,None,None,None,2,fermSteps[1]['name'],None,fermSteps[1]['temp'],fermSteps[1]['pressure'],"Kegs 20l",None,None,None,None],
         ["Viability",None,None,None,None,None,3,fermSteps[2]['name'],None,fermSteps[2]['temp'],fermSteps[2]['pressure'],"Flaschen 0.5",None,None,None,None],
         ["Stammwürze",None,None,og-0.1,og,og+0.1,4,fermSteps[3]['name'],None,fermSteps[3]['temp'],fermSteps[3]['pressure'],"Flaschen 0.3",None,None,None,None],
         ["Restextrakt",None,None,round((fg-0.1),1),fg,round((fg+0.1),1),5,fermSteps[4]['name'],None,fermSteps[4]['temp'],fermSteps[4]['pressure'],"Direktausschank",None,None,None,None],
         ["pH" ,None,None,round((mashpH-1.5),2),round((mashpH-1.4),2),round((mashpH-1.3),2),6,fermSteps[5]['name'],None,fermSteps[5]['temp'],fermSteps[5]['pressure'],None,None,None,None,None],
-        ["Alkoholgehalt",None,None,round((abv-0.1),1),abv,round((abv+0.1),1),7,fermSteps[6]['name'],None,fermSteps[6]['temp'],fermSteps[6]['pressure'],None,None,None,None,None],
+        ["Alkoholgehalt",None,None,round((abv-0.1),1),abv,round((abv+0.1),1),7,fermSteps[6]['name'],None,fermSteps[6]['temp'],fermSteps[6]['pressure'],TOTAL [l],None,None,None,None],
         [None,"Datum","Zeit","°P","pH","Temp","soll","Druck","set","Truboff","Bemerkungen",None,None,None,None,"Initialen"], #ok
         [1 ,None,None,None,None,None,None,None,None,None,None,None,None,None,None],
         [2 ,None,None,None,None,None,None,None,None,None,None,None,None,None,None],
