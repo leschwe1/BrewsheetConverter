@@ -46,7 +46,6 @@ def convert_route():
     if not allowed_file(file.filename): #check if filetype is allowed through helper function
         return "Only .json files are allowed", 400
 
-    # get metadata from form fields
     #.get(key, default) safely fetches values; returns '' if missing.
     # create a dict to pass to converter
     batchno = request.form.get('name', '')

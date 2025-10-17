@@ -300,7 +300,7 @@ def converter(batchno, brewdate,in_path, out_path, excel_layout = 'brewsheet_emp
     output.seek(0)
 
     # Return buffer so Flask can serve it
-    return output, f"{beerName}_brewsheet.xlsx"
+    wb.save(out_path)
     
     
     """
