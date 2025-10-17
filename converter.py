@@ -1,7 +1,4 @@
 ##############PYTHON 3.13.2
-brewfather_recipe = 'Schwarzbier.json'
-excel_layout = 'brewsheet_empty.xlsx'
-
 import json
 import io
 import csv

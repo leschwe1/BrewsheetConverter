@@ -44,12 +44,12 @@
             -->
             <div class="mb-3">
                 <label for="name" class="form-label">Batch Number</label>
-                <input class="form-control" type="text" id="name" name="name" placeholder="250402">
+                <input class="form-control" type="text" id="name" name="name" placeholder="250402" pattern="\d{6}">
             </div>
 
             <div class="mb-3">
                 <label for="date" class="form-label">Brew Date</label>
-                <input class="form-control" type="date" id="date" name="date">
+                <input class="form-control" type="text" id="date" name="date" placeholder="dd.mm.yyyy" pattern="\d{2}\.\d{2}\.\d{4}" >
             </div>
             <!-- SUBMIT BUTTON
             type="submit"               triggers to gather all fields and post on the URL given in action
