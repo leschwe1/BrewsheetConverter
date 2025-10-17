@@ -51,7 +51,6 @@ def convert_route():
     # create a dict to pass to converter
     batchno = request.form.get('name', '')
     brewdate = request.form.get('date', '')  
-    metadata = {"name": name, "date": date}
 
     # Save uploaded JSON to a temporary file (converter expects filename)
     with tempfile.NamedTemporaryFile(suffix='.json', delete=False) as tmp_in:
