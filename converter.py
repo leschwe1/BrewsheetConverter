@@ -3,12 +3,13 @@ brewfather_recipe = 'Schwarzbier.json'
 excel_layout = 'brewsheet_empty.xlsx'
 
 import json
+import io
 import csv
 from openpyxl import load_workbook
 
-def converter(brewfather_recipe, excel_layout = 'brewsheet_empty.xlsx'):
+def converter(batchno, brewdate,in_path, out_path, excel_layout = 'brewsheet_empty.xlsx'):
     #change this file / filepath to the Brewfather json output
-    with open(brewfather_recipe, 'r') as file:
+    with open(in_path, 'r') as file:
         data = json.load(file)
 
     #############################helper functions for conversions
@@ -148,7 +149,7 @@ def converter(brewfather_recipe, excel_layout = 'brewsheet_empty.xlsx'):
     #############################brewsheet
     df = [
         [None,None,None,None,None,None,None,None,None,None,None,None,None], #ok
-        [beerName ,None,None,None,"[BatchNo]",None,None,None,"[Date]",None,None,None,"Brewer:" ,None,None], #ok
+        [beerName ,None,None,None,batchno,None,None,None,brewdate,None,None,None,"Brewer:" ,None,None], #ok
         [style,None,og,"°P",abv,"%",fg,"°P",color,"EBC",ibu,"IBU",None,None,None], #ok
         ["ZUTATEN",None,"Prod","No",None,None,None,"alpha","Prod","No",None,None,None,"Prod","No"], #ok
         [globals().get('malt1', None), None, None, None,None, globals().get('hop1', None), None, globals().get('hopAlpha1', None), None, None, None, globals().get('yeast1', None), None],
@@ -204,7 +205,7 @@ def converter(brewfather_recipe, excel_layout = 'brewsheet_empty.xlsx'):
     #############################ferm sheet
     df2 = [
         [None,None,None,None,None,None,None,None,None,None,None,None,None], #ok
-        [beerName ,None,None,None,"[BatchNo]",None,None,None,"[Date]",None,None,None,None ,None,None], #ok
+        [beerName ,None,None,None,batchno,None,None,None,brewdate,None,None,None,None ,None,None], #ok
         [style,None,og,"°P",abv,"%",fg,"°P",color,"EBC",ibu,"IBU",None,None,None], #ok
         ["FERMENTATION",None,"ist","min","soll","max","Schritt","Beding." ,None,"Temp","Druck","ABFÜLLUNG",None,"Resp:" ,None,None],
         ["Hefemenge",None,None,None,fermYeastAmount,None,1,globals().get('fermStepName1',None),None,globals().get('fermStepTemp1',None),globals().get('fermStepPressure1',None),"Kegs 20l",None,None,None,None],
@@ -294,4 +295,14 @@ def converter(brewfather_recipe, excel_layout = 'brewsheet_empty.xlsx'):
             ws2.cell(row=start_row, column=col_num, value=value)
         start_row += 1  # Move to the next row
 
+    output = io.BytesIO()
+    wb.save(output)
+    output.seek(0)
+
+    # Return buffer so Flask can serve it
+    return output, f"{beerName}_brewsheet.xlsx"
+    
+    
+    """
     wb.save(f'{beerName}_brewsheet.xlsx')
+    """

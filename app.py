@@ -49,8 +49,8 @@ def convert_route():
     # get metadata from form fields
     #.get(key, default) safely fetches values; returns '' if missing.
     # create a dict to pass to converter
-    name = request.form.get('name', '')
-    date = request.form.get('date', '')  
+    batchno = request.form.get('name', '')
+    brewdate = request.form.get('date', '')  
     metadata = {"name": name, "date": date}
 
     # Save uploaded JSON to a temporary file (converter expects filename)
@@ -64,7 +64,8 @@ def convert_route():
     try:
         # CALL YOUR converter here - adapt to your converter's API
         # Example: convert(input_path, output_path, metadata_dict)
-        convert(in_path, out_path, metadata)
+        converter(batchno, brewdate,in_path, out_path)
+
 
         # read the generated xlsx into memory (so we can remove temp files right away)
         with open(out_path, 'rb') as f:
@@ -95,7 +96,7 @@ def convert_route():
 
     #return xlsx as download file
     return send_file(
-        io.BytesIO(xlsx_data), #wrap inio bytes
+        io.BytesIO(xlsx_data), #wrap into bytes
         as_attachment=True, #file is force-downloaded (not shown in browser)
         download_name=download_name, #MIME type for xlsx
         mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
