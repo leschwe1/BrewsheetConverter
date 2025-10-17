@@ -136,8 +136,8 @@ def converter(batchno, brewdate,in_path, out_path, excel_layout = 'brewsheet_emp
     #############################brewsheet
     df = [
         [None,None,None,None,None,None,None,None,None,None,None,None,None], #ok
-        [beerName ,None,None,None,batchno,None,None,None,brewdate,None,None,None,"Brewer:" ,None,None], #ok
-        [style,None,og,"°P",abv,"%",fg,"°P",color,"EBC",ibu,"IBU",None,None,None], #ok
+        [beerName ,None,None,None,None,None,None,batchno,None,brewdate,None,None,"Brewer:" ,None,None], #ok
+        [style,None,None,None,None,og,"°P",abv,"%",fg,"°P",color,"EBC",ibu,"IBU"], #ok
         ["ZUTATEN",None,"Prod","No",None,None,None,"alpha","Prod","No",None,None,None,"Prod","No"], #ok
         [malts[0], None, None, None,None, hoplist[0], None, alphalist[0], None, None, None, yeasts[0], None],
         [malts[1], None, None, None,None, hoplist[1], None, alphalist[1], None, None, None, yeasts[1], None],
@@ -192,8 +192,8 @@ def converter(batchno, brewdate,in_path, out_path, excel_layout = 'brewsheet_emp
     #############################ferm sheet
     df2 = [
         [None,None,None,None,None,None,None,None,None,None,None,None,None], #ok
-        [beerName ,None,None,None,batchno,None,None,None,brewdate,None,None,None,None ,None,None], #ok
-        [style,None,og,"°P",abv,"%",fg,"°P",color,"EBC",ibu,"IBU",None,None,None], #ok
+        [beerName ,None,None,None,None,None,None,batchno,None,brewdate,None,None,"Brewer:" ,None,None], #ok
+        [style,None,None,None,None,og,"°P",abv,"%",fg,"°P",color,"EBC",ibu,"IBU"], #ok
         ["FERMENTATION",None,"ist","min","soll","max","Schritt","Beding." ,None,"Temp","Druck","ABFÜLLUNG",None,"Resp:" ,None,None],
         ["Hefemenge",None,None,None,fermYeastAmount,None,1,fermSteps[0]['name'],None,fermSteps[0]['temp'],fermSteps[0]['pressure'],"Kegs 20l",None,None,None,None],
         ["Gen",None,None,None,None,None,2,fermSteps[1]['name'],None,fermSteps[1]['temp'],fermSteps[1]['pressure'],"Kegs 50l",None,None,None,None],
