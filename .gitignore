@@ -1,8 +1,1 @@
-# ignore csv, json, xslx
-*.csv
-*.json
-*.xlsx
-*.pyc
-
-# keep empty brewsheet pattern
-!brewsheet_empty.xlsx
+.venv
